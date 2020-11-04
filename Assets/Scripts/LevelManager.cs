@@ -5,11 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 { 
-    private void Awake()
-    {
-        //Zorgt ervoor dat de Level Manager niet verwijderd wordt zodra een nieuwe scene/level wordt geladen!
-        DontDestroyOnLoad(this.gameObject);
-    }
 
     public void LaadScene(int sceneIndex)
     {
