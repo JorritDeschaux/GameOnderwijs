@@ -17,11 +17,15 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
 {
     public SerialController serialController;
     public LevelManager levelManager;
+    private GameObject cursor;
+    private CursorScript cursorScript;
 
     // Initialization
     void Start()
     {
         serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
+        cursor = GameObject.FindGameObjectWithTag("Cursor");
+        cursorScript = cursor.GetComponent<CursorScript>();
     }
 
     // Executed each frame
@@ -69,7 +73,7 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         }
         else if (message == "A")
         {
-            Debug.Log("Key A pressed");
+            cursor.transform.position = cursorScript.legeVakken[0].transform.position;
         }
         else if (message == "4")
         {
@@ -85,7 +89,7 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         }
         else if (message == "B")
         {
-            Debug.Log("Key B pressed");
+            cursor.transform.position = cursorScript.legeVakken[1].transform.position;
         }
         else if (message == "7")
         {
@@ -101,7 +105,7 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         }
         else if (message == "C")
         {
-            Debug.Log("Key C pressed");
+            cursor.transform.position = cursorScript.legeVakken[2].transform.position;
         }
         else if (message == "*")
         {
@@ -117,7 +121,7 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         }
         else if (message == "D")
         {
-            Debug.Log("Key D pressed");
+            cursor.transform.position = cursorScript.legeVakken[3].transform.position;
         }
     }
 }
