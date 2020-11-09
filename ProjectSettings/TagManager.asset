@@ -6,6 +6,8 @@ TagManager:
   tags:
   - LeegVak
   - Cursor
+  - Kabel
+  - InputField
   layers:
   - Default
   - TransparentFX

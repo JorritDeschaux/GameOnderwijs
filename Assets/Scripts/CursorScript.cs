@@ -13,9 +13,9 @@ public class CursorScript : MonoBehaviour
         huidigVak = 0;
     }
 
-    private void CheckInput()
+    public void CheckInput(string richting)
     {
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (richting == "R")
         {
             if (huidigVak < legeVakken.Count - 1)
             {
@@ -28,7 +28,7 @@ public class CursorScript : MonoBehaviour
                 gameObject.transform.position = legeVakken[huidigVak].transform.position;
             }
         }
-        else if (Input.GetKeyDown(KeyCode.LeftArrow))
+        else if (richting == "L")
         {
             if (huidigVak <= legeVakken.Count - 1 && huidigVak > 0)
             {
@@ -45,9 +45,4 @@ public class CursorScript : MonoBehaviour
         Debug.Log(huidigVak);
     }
 
-    private void Update()
-    {
-        CheckInput();
-
-    }
 }

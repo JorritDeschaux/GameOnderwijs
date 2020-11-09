@@ -9,6 +9,8 @@
 using UnityEngine;
 using System.Collections;
 using UnityEngine.SceneManagement;
+using JetBrains.Annotations;
+using System;
 
 /**
  * Sample for reading using polling by yourself, and writing too.
@@ -20,6 +22,8 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
     private GameObject cursor;
     private CursorScript cursorScript;
 
+    public string message;
+
     // Initialization
     void Start()
     {
@@ -28,14 +32,13 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         cursorScript = cursor.GetComponent<CursorScript>();
     }
 
-    // Executed each frame
     void Update()
     {
         //---------------------------------------------------------------------
         // Receive data
         //---------------------------------------------------------------------
 
-        string message = serialController.ReadSerialMessage();
+        //string message = serialController.ReadSerialMessage();
 
         if (message == null)
             return;
@@ -113,7 +116,7 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         }
         else if (message == "0")
         {
-            Debug.Log("Key 0 pressed");
+            
         }
         else if (message == "#")
         {
@@ -123,5 +126,15 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         {
             cursor.transform.position = cursorScript.legeVakken[3].transform.position;
         }
+        else if (message == "L" || message == "R")
+        {
+            cursorScript.CheckInput(message);
+        }
+        else if (message == "S")
+        {
+
+        }
+
+        
     }
 }
