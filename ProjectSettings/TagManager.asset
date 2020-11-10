@@ -8,6 +8,8 @@ TagManager:
   - Cursor
   - Kabel
   - InputField
+  - Canvas
+  - Kabel Image
   layers:
   - Default
   - TransparentFX

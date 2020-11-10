@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,16 +7,31 @@ public class CursorScript : MonoBehaviour
 {
     public List<GameObject> legeVakken = new List<GameObject>();
 
-    private int huidigVak;
+    public int huidigVak;
+    public GameObject kabelPrefab;
+    public Canvas canvas;
+
+    private bool alBezig = false;
+
+    public int welkVakBezig;
+
+
+    public static CursorScript current;
+    private void Awake()
+    {
+        current = this;
+    }
     private void Start()
     {
+        canvas = GameObject.FindGameObjectWithTag("Canvas").GetComponent<Canvas>();
+
         gameObject.transform.position = legeVakken[0].transform.position;
         huidigVak = 0;
     }
 
-    public void CheckInput(string richting)
+    public void CheckInput(string input)
     {
-        if (richting == "R")
+        if (input == "R")
         {
             if (huidigVak < legeVakken.Count - 1)
             {
@@ -28,7 +44,7 @@ public class CursorScript : MonoBehaviour
                 gameObject.transform.position = legeVakken[huidigVak].transform.position;
             }
         }
-        else if (richting == "L")
+        else if (input == "L")
         {
             if (huidigVak <= legeVakken.Count - 1 && huidigVak > 0)
             {
@@ -45,4 +61,47 @@ public class CursorScript : MonoBehaviour
         Debug.Log(huidigVak);
     }
 
+    public void VeranderLocatieCursor()
+    {
+        legeVakken.Remove(legeVakken[huidigVak]);
+
+        if(legeVakken.Count == 1)
+        {
+            gameObject.transform.position = legeVakken[0].transform.position;
+        }
+        else if(legeVakken.Count == 0)
+        {
+            Destroy(gameObject);
+            Debug.Log("gewonnen");
+        }
+        else
+        {
+            huidigVak = 0;
+            gameObject.transform.position = legeVakken[huidigVak].transform.position;
+        }
+
+        alBezig = false;
+       
+    }
+
+    void Update()
+    {
+        if (!alBezig)
+        {
+            MaakKabel();
+            welkVakBezig = huidigVak;
+        }
+        
+    }
+
+    private void MaakKabel()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            var kabel = Instantiate(kabelPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity, canvas.transform) as GameObject;
+            alBezig = true;
+        }
+       
+    }
 }

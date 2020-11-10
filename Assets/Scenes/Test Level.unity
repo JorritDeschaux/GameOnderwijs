@@ -223,7 +223,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serialController: {fileID: 609477337}
   levelManager: {fileID: 8903484284506999578, guid: 128cf799cbf9af145b975863476eb687, type: 3}
-  message: 
 --- !u!4 &523315376
 Transform:
   m_ObjectHideFlags: 0
@@ -541,7 +540,7 @@ RectTransform:
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children: []
   m_Father: {fileID: 1712040068}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -650,6 +649,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 998050213}
+  - component: {fileID: 998050214}
   m_Layer: 5
   m_Name: LeegVak
   m_TagString: Untagged
@@ -673,9 +673,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 275, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &998050214
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 998050212}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1684362a4070a14f9720b99a9a80a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  antwoord: 0.5
+  soortSom: breuk
+  som: 1 - 1/2 =
 --- !u!1001 &1107006197
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -767,8 +782,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: -50, y: 0}
+  m_SizeDelta: {x: 120, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1219381706
 MonoBehaviour:
@@ -842,8 +857,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 350, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_AnchoredPosition: {x: 375, y: 0}
+  m_SizeDelta: {x: 75, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1426006586
 MonoBehaviour:
@@ -892,6 +907,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1639758577}
+  - component: {fileID: 1639758578}
   m_Layer: 5
   m_Name: LeegVak (1)
   m_TagString: Untagged
@@ -918,6 +934,21 @@ RectTransform:
   m_AnchoredPosition: {x: -400, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1639758578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639758576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1684362a4070a14f9720b99a9a80a97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  antwoord: 1
+  soortSom: normaal
+  som: 2 x 1/2 =
 --- !u!1 &1712040064
 GameObject:
   m_ObjectHideFlags: 0
@@ -932,7 +963,7 @@ GameObject:
   - component: {fileID: 1712040065}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: Canvas
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1012,8 +1043,8 @@ RectTransform:
   - {fileID: 412522592}
   - {fileID: 1891085781}
   - {fileID: 426873521}
-  - {fileID: 544703414}
   - {fileID: 898898152}
+  - {fileID: 544703414}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1209,36 +1240,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1970830792}
   m_CullTransparentMesh: 0
---- !u!1 &2059714007
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2059714008}
-  m_Layer: 0
-  m_Name: Kabel Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2059714008
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059714007}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2074189674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,6 +1323,10 @@ PrefabInstance:
       propertyPath: kabelInputPrefab
       value: 
       objectReference: {fileID: 2254690738256048717, guid: d64b54dd6bfe365478f3a03d7dbc4596, type: 3}
+    - target: {fileID: 6316035473782978082, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
+      propertyPath: m_UseSpriteMesh
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6316035473782978092, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1332,7 +1337,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6316035473782978092, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 6316035473782978092, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1352,7 +1357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6316035473782978092, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6316035473782978092, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1407,6 +1412,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6316035473782978093, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
+      propertyPath: legeVakken.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6316035473782978093, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
       propertyPath: legeVakken.Array.data[0]
       value: 
       objectReference: {fileID: 1639758576}
@@ -1414,6 +1423,14 @@ PrefabInstance:
       propertyPath: legeVakken.Array.data[1]
       value: 
       objectReference: {fileID: 998050212}
+    - target: {fileID: 6316035473782978093, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
+      propertyPath: kabelPrefab
+      value: 
+      objectReference: {fileID: 4655618212564317610, guid: 72a51781ffdc17e41bdc61bf2565fa1e, type: 3}
+    - target: {fileID: 6316035473782978093, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
+      propertyPath: legeVakken.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 6316035473782978095, guid: 1d9cbccfe0a74b74ea7220047aa6c2f3, type: 3}
       propertyPath: m_Name
       value: Cursor

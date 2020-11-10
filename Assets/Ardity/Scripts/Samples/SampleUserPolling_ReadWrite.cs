@@ -22,14 +22,14 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
     private GameObject cursor;
     private CursorScript cursorScript;
 
-    public string message;
+    private string message;
 
     // Initialization
     void Start()
     {
         serialController = GameObject.Find("SerialController").GetComponent<SerialController>();
         cursor = GameObject.FindGameObjectWithTag("Cursor");
-        cursorScript = cursor.GetComponent<CursorScript>();
+        cursorScript = CursorScript.current;
     }
 
     void Update()
