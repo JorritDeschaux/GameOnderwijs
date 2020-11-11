@@ -9,9 +9,10 @@ public class Kabel : MonoBehaviour
     private InputField antwoordInput;
     private Transform kabelTransform;
     private GameObject som;
-    private GameObject vak;
+    private GameObject kabelStuk;
+    public GameObject vak;
 
-    private string soortSom;
+    public string soortSom;
 
     private float breukGrootte;
     private void Start()
@@ -59,13 +60,25 @@ public class Kabel : MonoBehaviour
 
     public void CheckAntwoord()
     {
+        switch (vak.GetComponent<Som>().rotatie)
+        {
+            case "horizontaal":
+                kabelStuk = Instantiate(kabelStukPrefab, new Vector3(CursorScript.current.gameObject.transform.position.x, CursorScript.current.gameObject.transform.position.y, kabelTransform.position.z), Quaternion.identity, CursorScript.current.canvas.transform) as GameObject;
+                break;
+            case "verticaal":
+                kabelStuk = Instantiate(kabelStukPrefab, new Vector3(CursorScript.current.gameObject.transform.position.x, CursorScript.current.gameObject.transform.position.y, kabelTransform.position.z), Quaternion.Euler(0f, 0f, 90f), CursorScript.current.canvas.transform) as GameObject;
+                break;
+            default:
+                break;
+        }
+
         switch (soortSom)
         {
             case "normaal":
                 if (vak.GetComponent<Som>().antwoord == float.Parse(antwoordInput.text))
                 {
+                    WinManager.current.geplaatsteKabels.Add(kabelStuk.GetComponent<Image>());
                     Debug.Log("Lengte is goed");
-                    var kabelStuk = Instantiate(kabelStukPrefab, new Vector3(CursorScript.current.gameObject.transform.position.x, CursorScript.current.gameObject.transform.position.y, kabelTransform.position.z), Quaternion.identity, CursorScript.current.canvas.transform) as GameObject;
                     kabelStuk.transform.localScale = new Vector3(kabelTransform.localScale.x, kabelTransform.localScale.y);
                     CursorScript.current.VeranderLocatieCursor();
                     Destroy(vak);
@@ -79,8 +92,8 @@ public class Kabel : MonoBehaviour
             case "breuk":
                 if (vak.GetComponent<Som>().antwoord == breukGrootte)
                 {
+                    WinManager.current.geplaatsteKabels.Add(kabelStuk.GetComponent<Image>());
                     Debug.Log("Lengte is goed");
-                    var kabelStuk = Instantiate(kabelStukPrefab, new Vector3(CursorScript.current.gameObject.transform.position.x, CursorScript.current.gameObject.transform.position.y, kabelTransform.position.z), Quaternion.identity, CursorScript.current.canvas.transform) as GameObject;
                     kabelStuk.transform.localScale = new Vector3(kabelTransform.localScale.x, kabelTransform.localScale.y);
                     CursorScript.current.VeranderLocatieCursor();
                     Destroy(vak);

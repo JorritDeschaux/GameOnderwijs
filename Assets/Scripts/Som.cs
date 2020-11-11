@@ -8,5 +8,6 @@ public class Som : MonoBehaviour
     public float antwoord;
     public string soortSom;
     public string som;
+    public string rotatie;
 
 }

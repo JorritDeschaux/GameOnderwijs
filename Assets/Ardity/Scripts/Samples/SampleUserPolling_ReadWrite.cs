@@ -11,6 +11,7 @@ using System.Collections;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
 using System;
+using UnityEngine.UI;
 
 /**
  * Sample for reading using polling by yourself, and writing too.
@@ -22,7 +23,10 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
     private GameObject cursor;
     private CursorScript cursorScript;
 
-    private string message;
+    private InputField input;
+    private Kabel kabel;
+
+    public string message;
 
     // Initialization
     void Start()
@@ -34,6 +38,15 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
 
     void Update()
     {
+        if (cursorScript != null)
+        {
+            if (cursorScript.alBezig)
+            {
+                input = FindObjectOfType<InputField>();
+                kabel = GameObject.FindGameObjectWithTag("Kabel").GetComponent<Kabel>();
+            }
+        }
+        
         //---------------------------------------------------------------------
         // Receive data
         //---------------------------------------------------------------------
@@ -54,13 +67,38 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
             {
                 levelManager.LaadScene(2);
             }
+
+            switch (kabel.soortSom)
+            {
+                case "normaal":
+                    input.text = "1";
+                    break;
+                case "breuk":
+                    input.text += "1/";
+                    break;
+                default:
+                    break;
+            }
+            
         }
         else if (message == "2")
         {
             if (SceneManager.GetActiveScene().buildIndex == 0)
             {
                 levelManager.LaadVolgendeScene();
-            }           
+            }
+
+            switch (kabel.soortSom)
+            {
+                case "normaal":
+                    input.text = "2";
+                    break;
+                case "breuk":
+                    input.text += "2/";
+                    break;
+                default:
+                    break;
+            }
         }
         else if (message == "3")
         {
@@ -73,6 +111,18 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
                 levelManager.LaadScene(0);
             }
 
+            switch (kabel.soortSom)
+            {
+                case "normaal":
+                    input.text = "3";
+                    break;
+                case "breuk":
+                    input.text += "3/";
+                    break;
+                default:
+                    break;
+            }
+
         }
         else if (message == "A")
         {
@@ -80,15 +130,45 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         }
         else if (message == "4")
         {
-            Debug.Log("Key 4 pressed");
+            switch (kabel.soortSom)
+            {
+                case "normaal":
+                    input.text = "4";
+                    break;
+                case "breuk":
+                    input.text += "4/";
+                    break;
+                default:
+                    break;
+            }
         }
         else if (message == "5")
         {
-            Debug.Log("Key 5 pressed");
+            switch (kabel.soortSom)
+            {
+                case "normaal":
+                    input.text = "5";
+                    break;
+                case "breuk":
+                    input.text += "5/";
+                    break;
+                default:
+                    break;
+            }
         }
         else if (message == "6")
         {
-            Debug.Log("Key 6 pressed");
+            switch (kabel.soortSom)
+            {
+                case "normaal":
+                    input.text = "6";
+                    break;
+                case "breuk":
+                    input.text += "6/";
+                    break;
+                default:
+                    break;
+            }
         }
         else if (message == "B")
         {
@@ -96,15 +176,45 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         }
         else if (message == "7")
         {
-            Debug.Log("Key 7 pressed");
+            switch (kabel.soortSom)
+            {
+                case "normaal":
+                    input.text = "7";
+                    break;
+                case "breuk":
+                    input.text += "7/";
+                    break;
+                default:
+                    break;
+            }
         }
         else if (message == "8")
         {
-            Debug.Log("Key 8 pressed");
+            switch (kabel.soortSom)
+            {
+                case "normaal":
+                    input.text = "8";
+                    break;
+                case "breuk":
+                    input.text += "8/";
+                    break;
+                default:
+                    break;
+            }
         }
         else if (message == "9")
         {
-            Debug.Log("Key 9 pressed");
+            switch (kabel.soortSom)
+            {
+                case "normaal":
+                    input.text = "9";
+                    break;
+                case "breuk":
+                    input.text += "9/";
+                    break;
+                default:
+                    break;
+            }
         }
         else if (message == "C")
         {
@@ -120,7 +230,7 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         }
         else if (message == "#")
         {
-            Debug.Log("Key # pressed");
+            input.text = "";
         }
         else if (message == "D")
         {
@@ -128,11 +238,28 @@ public class SampleUserPolling_ReadWrite : MonoBehaviour
         }
         else if (message == "L" || message == "R")
         {
-            cursorScript.CheckInput(message);
+            if (SceneManager.GetActiveScene().buildIndex >= 2)
+            {
+                cursorScript.CheckInput(message);
+            }
+            else
+            {
+                MenuScroll.current.Scroll(message);
+            }
         }
         else if (message == "S")
         {
-
+            if(SceneManager.GetActiveScene().buildIndex >= 2)
+            {
+                if (!cursorScript.alBezig)
+                {
+                    cursorScript.MaakKabel();
+                }
+            }
+            else
+            {
+                MenuScroll.current.CheckInput();
+            }
         }
 
         

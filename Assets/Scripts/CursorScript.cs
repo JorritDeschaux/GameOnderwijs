@@ -11,7 +11,7 @@ public class CursorScript : MonoBehaviour
     public GameObject kabelPrefab;
     public Canvas canvas;
 
-    private bool alBezig = false;
+    public bool alBezig = false;
 
     public int welkVakBezig;
 
@@ -72,7 +72,7 @@ public class CursorScript : MonoBehaviour
         else if(legeVakken.Count == 0)
         {
             Destroy(gameObject);
-            Debug.Log("gewonnen");
+            WinManager.current.Gewonnen();
         }
         else
         {
@@ -84,24 +84,23 @@ public class CursorScript : MonoBehaviour
        
     }
 
-    void Update()
-    {
-        if (!alBezig)
-        {
-            MaakKabel();
-            welkVakBezig = huidigVak;
-        }
-        
-    }
-
-    private void MaakKabel()
+    public void MaakKabel()
     {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        if(legeVakken[huidigVak].GetComponent<Som>().rotatie == "horizontaal")
         {
             var kabel = Instantiate(kabelPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity, canvas.transform) as GameObject;
-            alBezig = true;
         }
+        else if(legeVakken[huidigVak].GetComponent<Som>().rotatie == "verticaal")
+        {
+            var kabel = Instantiate(kabelPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.Euler(0f, 0f, 90f), canvas.transform) as GameObject;
+        }
+
+        alBezig = true;
+            welkVakBezig = huidigVak;
+        //}
        
     }
 }
