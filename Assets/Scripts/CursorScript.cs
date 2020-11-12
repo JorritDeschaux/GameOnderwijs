@@ -65,11 +65,11 @@ public class CursorScript : MonoBehaviour
     {
         legeVakken.Remove(legeVakken[huidigVak]);
 
-        if(legeVakken.Count == 1)
+        if (legeVakken.Count == 1)
         {
             gameObject.transform.position = legeVakken[0].transform.position;
         }
-        else if(legeVakken.Count == 0)
+        else if (legeVakken.Count == 0)
         {
             Destroy(gameObject);
             WinManager.current.Gewonnen();
@@ -79,16 +79,11 @@ public class CursorScript : MonoBehaviour
             huidigVak = 0;
             gameObject.transform.position = legeVakken[huidigVak].transform.position;
         }
-
-        alBezig = false;
-       
     }
 
     public void MaakKabel()
     {
 
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
         if(legeVakken[huidigVak].GetComponent<Som>().rotatie == "horizontaal")
         {
             var kabel = Instantiate(kabelPrefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y, gameObject.transform.position.z), Quaternion.identity, canvas.transform) as GameObject;
@@ -99,8 +94,7 @@ public class CursorScript : MonoBehaviour
         }
 
         alBezig = true;
-            welkVakBezig = huidigVak;
-        //}
+        welkVakBezig = huidigVak;
        
     }
 }

@@ -58,7 +58,7 @@ public class Kabel : MonoBehaviour
         
     }
 
-    public void CheckAntwoord()
+    private void VoegKabelToe()
     {
         switch (vak.GetComponent<Som>().rotatie)
         {
@@ -71,16 +71,22 @@ public class Kabel : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    public void CheckAntwoord()
+    {
 
         switch (soortSom)
         {
             case "normaal":
                 if (vak.GetComponent<Som>().antwoord == float.Parse(antwoordInput.text))
                 {
+                    VoegKabelToe();
                     WinManager.current.geplaatsteKabels.Add(kabelStuk.GetComponent<Image>());
                     Debug.Log("Lengte is goed");
                     kabelStuk.transform.localScale = new Vector3(kabelTransform.localScale.x, kabelTransform.localScale.y);
                     CursorScript.current.VeranderLocatieCursor();
+                    CursorScript.current.alBezig = false;
                     Destroy(vak);
                     Destroy(gameObject);
                 }
@@ -92,10 +98,12 @@ public class Kabel : MonoBehaviour
             case "breuk":
                 if (vak.GetComponent<Som>().antwoord == breukGrootte)
                 {
+                    VoegKabelToe();
                     WinManager.current.geplaatsteKabels.Add(kabelStuk.GetComponent<Image>());
                     Debug.Log("Lengte is goed");
                     kabelStuk.transform.localScale = new Vector3(kabelTransform.localScale.x, kabelTransform.localScale.y);
                     CursorScript.current.VeranderLocatieCursor();
+                    CursorScript.current.alBezig = false;
                     Destroy(vak);
                     Destroy(gameObject);
                 }
@@ -107,7 +115,7 @@ public class Kabel : MonoBehaviour
             default:
                 break;
         }
-        
+
     }
 
 }
